@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>⚠️ SYSTEM HACKED ⚠️</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 80px;
+    }
+    h1 {
+      font-size: 50px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    #progress-container {
+      margin-top: 50px;
+      width: 70%;
+      height: 30px;
+      border: 2px solid red;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #222;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: red;
+      transition: width 0.5s;
+    }
+    #progress-text {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚠️ SYSTEM BREACH DETECTED ⚠️</h1>
+  <p>Your files are being encrypted...</p>
+  
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="progress-text">Encryption: 0%</div>
+
+  <!-- Squeaky Chicken Sound -->
+  <audio autoplay loop>
+    <source src="https://www.myinstants.com/media/sounds/squeakytoy.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Fake encryption progress
+    let progress = 0;
+    setInterval(() => {
+      if(progress < 100){
+        progress++;
+        document.getElementById("progress-bar").style.width = progress + "%";
+        document.getElementById("progress-text").innerText = "Encryption: " + progress + "%";
+      } else {
+        document.getElementById("progress-text").innerText = "⚠️ All files encrypted! ⚠️";
+      }
+    }, 200);
+
+    // Annoying popups
+    setInterval(() => {
+      alert("⚠️ Your system has been hacked! Restart required!");
+    }, 3000);
+
+    // If they try to close/leave
+    window.onbeforeunload = function() {
+      return "Your system is hacked! Restart to stop!";
+    };
+
+    // Reopen tab if focus lost
+    setInterval(() => {
+      if(!document.hasFocus()){
+        window.open(window.location.href, "_blank");
+      }
+    }, 2000);
+  </script>
+</body>
+</html>
