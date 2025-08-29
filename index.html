@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>System Hacked!</title>
+  <title>System Alert</title>
   <style>
     body {
       background-color: black;
       color: red;
-      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-family: "Courier New", monospace;
       font-size: 40px;
       text-align: center;
-      margin-top: 20%;
+      margin-top: 15%;
+    }
+    button {
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    button:hover {
+      background-color: darkred;
     }
   </style>
 </head>
 <body>
-  <h1>⚠️ Your System is HACKED ⚠️</h1>
-  <p>Restart is the ONLY escape!</p>
+  <h1>⚠️ YOUR SYSTEM IS HACKED ⚠️</h1>
+  <p>Restart is the ONLY option!</p>
 
-  <!-- Hidden audio -->
+  <!-- Start Button -->
+  <button onclick="startPrank()">CLICK HERE TO FIX</button>
+
+  <!-- Chicken Sound -->
   <audio id="prank-audio" loop>
     <source src="https://www.myinstants.com/media/sounds/squeakytoy.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Force fullscreen trap
-    document.documentElement.requestFullscreen?.();
-
-    // Force play audio at max volume
-    window.addEventListener('load', () => {
+    function startPrank() {
       const audio = document.getElementById('prank-audio');
       audio.volume = 1.0;
+      audio.play();
 
-      const playAudio = () => {
-        audio.play().catch(() => {
-          setTimeout(playAudio, 1000); // keep retrying until it plays
-        });
-      };
-      playAudio();
-    });
-
-    // Endless alert spam
-    setInterval(() => {
-      alert("⚠️ Your PC is HACKED! Restart to escape!");
-    }, 2000);
-
-    // Stop them from leaving
-    window.onbeforeunload = () => true;
+      // Start endless popups
+      setInterval(() => {
+        alert("⚠️ YOUR PC IS BEING MONITORED ⚠️\nYou cannot stop this!");
+      }, 2000);
+    }
   </script>
 </body>
 </html>
