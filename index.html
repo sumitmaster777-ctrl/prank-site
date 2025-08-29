@@ -6,7 +6,7 @@
     body {
       background-color: black;
       color: red;
-      font-family: monospace;
+      font-family: Impact, Charcoal, sans-serif;
       text-align: center;
       padding-top: 80px;
     }
@@ -49,12 +49,26 @@
   </div>
   <div id="progress-text">Encryption: 0%</div>
 
-  <!-- Squeaky Chicken Sound -->
-  <audio autoplay loop>
+  <!-- Hidden audio -->
+  <audio id="prank-audio" loop>
     <source src="https://www.myinstants.com/media/sounds/squeakytoy.mp3" type="audio/mpeg">
   </audio>
 
   <script>
+    // Force play after load with max volume
+    window.onload = () => {
+      const audio = document.getElementById("prank-audio");
+      audio.volume = 1.0; // MAX volume
+      setTimeout(() => {
+        audio.play().catch(() => {
+          document.body.addEventListener("click", () => {
+            audio.volume = 1.0;
+            audio.play();
+          }, { once: true });
+        });
+      }, 1000);
+    };
+
     // Fake encryption progress
     let progress = 0;
     setInterval(() => {
@@ -86,3 +100,4 @@
   </script>
 </body>
 </html>
+
