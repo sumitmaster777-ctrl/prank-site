@@ -1,53 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>⚠️ SYSTEM HACKED ⚠️</title>
+  <title>System Hacked!</title>
   <style>
     body {
       background-color: black;
       color: red;
-      font-family: Impact, Charcoal, sans-serif;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 40px;
       text-align: center;
-      padding-top: 80px;
-    }
-    h1 {
-      font-size: 50px;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    #progress-container {
-      margin-top: 50px;
-      width: 70%;
-      height: 30px;
-      border: 2px solid red;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #222;
-    }
-    #progress-bar {
-      height: 100%;
-      width: 0%;
-      background-color: red;
-      transition: width 0.5s;
-    }
-    #progress-text {
-      margin-top: 10px;
-      font-size: 20px;
+      margin-top: 20%;
     }
   </style>
 </head>
 <body>
-  <h1>⚠️ SYSTEM BREACH DETECTED ⚠️</h1>
-  <p>Your files are being encrypted...</p>
-  
-  <div id="progress-container">
-    <div id="progress-bar"></div>
-  </div>
-  <div id="progress-text">Encryption: 0%</div>
+  <h1>⚠️ Your System is HACKED ⚠️</h1>
+  <p>Restart is the ONLY escape!</p>
 
   <!-- Hidden audio -->
   <audio id="prank-audio" loop>
@@ -55,49 +23,29 @@
   </audio>
 
   <script>
-    // Force play after load with max volume
-    window.onload = () => {
-      const audio = document.getElementById("prank-audio");
-      audio.volume = 1.0; // MAX volume
-      setTimeout(() => {
+    // Force fullscreen trap
+    document.documentElement.requestFullscreen?.();
+
+    // Force play audio at max volume
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('prank-audio');
+      audio.volume = 1.0;
+
+      const playAudio = () => {
         audio.play().catch(() => {
-          document.body.addEventListener("click", () => {
-            audio.volume = 1.0;
-            audio.play();
-          }, { once: true });
+          setTimeout(playAudio, 1000); // keep retrying until it plays
         });
-      }, 1000);
-    };
+      };
+      playAudio();
+    });
 
-    // Fake encryption progress
-    let progress = 0;
+    // Endless alert spam
     setInterval(() => {
-      if(progress < 100){
-        progress++;
-        document.getElementById("progress-bar").style.width = progress + "%";
-        document.getElementById("progress-text").innerText = "Encryption: " + progress + "%";
-      } else {
-        document.getElementById("progress-text").innerText = "⚠️ All files encrypted! ⚠️";
-      }
-    }, 200);
-
-    // Annoying popups
-    setInterval(() => {
-      alert("⚠️ Your system has been hacked! Restart required!");
-    }, 3000);
-
-    // If they try to close/leave
-    window.onbeforeunload = function() {
-      return "Your system is hacked! Restart to stop!";
-    };
-
-    // Reopen tab if focus lost
-    setInterval(() => {
-      if(!document.hasFocus()){
-        window.open(window.location.href, "_blank");
-      }
+      alert("⚠️ Your PC is HACKED! Restart to escape!");
     }, 2000);
+
+    // Stop them from leaving
+    window.onbeforeunload = () => true;
   </script>
 </body>
 </html>
-
